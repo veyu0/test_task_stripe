@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Buy cool new product</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <section>
+      <div class="product">
+        <div class="description">
+          {% for i in items %}
+            <h3>{{i.name}}</h3>
+            <p>{{i.description}}</p>
+            <p>{{i.price}}</p>
+          {% endfor %}
+        </div>
+      </div>
+      <form action="{% url 'buy' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" id="checkout-button">Checkout</button>
+      </form>
+    </section>
+  </body>
+</html>
